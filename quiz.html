@@ -1,0 +1,117 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	var activeUser = 0; // текущий игрок, загадывающий или отгадывающий
+    var answerCount1 = 100; // промежуточная величина для подсчета очков
+    var answerCount2 = 100;
+    var try1 = 1; // кол-во попыток, так же и для подсчёта очков
+    var try2 = 1;
+	var rightAnswer1 = true; // дал ли правильный ответ игрок, чтобы соперник задал новый вопрос.
+	var rightAnswer2 = true;
+	var exit1 = false; // выход, для каждого игрока.
+    var exit2 = false;
+
+	var user1 = { // пользователь, с именем, набранными очками за игру, заданным вопросом для соперника и ответом.
+  		name: "",
+		question : "",
+		answer : "",
+		score: 0
+	};
+	var user2 = {
+  		name: "",  		
+		question : "",
+		answer : "",
+		score: 0
+	};
+//	var usersCount = +prompt("Сколько играков будет играть в игру?");
+	do{
+		user1.name = prompt("Введите имя первого играка.");
+	} while (!isNaN(user1.name));
+	
+	do {
+		user2.name = prompt("Введите имя второго играка.");
+	} while (!isNaN(user2.name));
+	// Сначала спрашиваем игроков их имена
+	alert("Далее по переменке, Вы будете вводить числа, отгадывая, что загадал соперник.\nДля завершения игры нажмите \"Отмана\".");
+	
+	do {
+		switch (activeUser) {
+		case 0 :
+			if (rightAnswer1){
+				do{
+					user2.question = +prompt(user2.name + " введите число от 0 до 100.");
+                    if (!user2.question){
+                        exit2 = true;
+                        break;
+                    }
+				} while (isNaN(user2.question) || user2.question < 0);
+				rightAnswer1 = false;
+			}
+			
+			if (!exit2){
+                user1.answer = +prompt(user1.name + " отгадайте число, которое загадал " + user2.name);
+                if (!user1.answer){
+                    exit1 = true;
+                    break;
+                }
+			
+                if (user1.answer == user2.question){
+                    user1.score += answerCount1; 
+                    alert("Поздравляю, вы отгадали число, с " + try1 + " попытки. Набрав " + answerCount1 + " очков");                
+                    activeUser = 0; // т.к. игрок дал правильный ответ, то имеет преемущество снова отгадывать
+                    rightAnswer1 = true;		
+                    try1 = 0; 
+                    answerCount1 = 100;
+                    // сброс кол-во попыток и промежуточной величины для подсчёта очков.
+                }
+                else{
+                    alert("Ответ не верный, ход переходит сопернику.");
+                    answerCount1 -= parseInt(answerCount1*try1++/100); // по умолчанию, если игрок даёт правильный ответ с первой попытки, ему даётся 100 очков, с каждой новой попыткой, кол-во очков уменьшается
+                    activeUser = 1;                                    
+                }
+            }
+			break;
+			
+		case 1 :
+		if (rightAnswer2){
+				do{
+					user1.question = +prompt(user1.name + " введите число от 0 до 100.");
+                    if (!user1.question){
+                        exit1 = true;
+                        break;
+                    }
+				} while (isNaN(user1.question) || user1.question < 0);
+				rightAnswer2 = false;
+			}
+			
+			if (!exit1){
+                user2.answer = +prompt(user2.name + " отгадайте число, которое загадал " + user1.name);
+                if (!user2.answer){
+                    exit2 = true;
+                    break;
+                }
+                
+                if (user2.answer == user1.question){
+                    alert("Поздравляю, вы отгадали число, с " + try2 + " попытки. Набрав " + answerCount2 + " очков");
+                    user2.score += answerCount1; 
+                    activeUser = 1;
+                    rightAnswer2 = true;				
+                    try2 = 0;
+                    answerCount2 = 100;
+                }
+                else{
+                    alert("Ответ не верный, ход переходит сопернику.");
+                    answerCount2 -= parseInt(answerCount2*try2++/100);
+                    activeUser = 0;
+                }
+            }
+		break;
+		}
+	} while (!exit1 && !exit2); // проверка на завершение игры
+    
+    // проверяем, кто завершил игру и выводим конечный результат, за всё игру.
+     if (exit1) 
+         alert(user1.name + " завершил игру.\n " + user1.name + " набрал " + user1.score + " очков.\n" + user2.name + " набрал " + user2.score + " очков.");
+     if (exit2)
+         alert(user2.name + " завершил игру.\n " + user1.name + " набрал " + user1.score + " очков.\n" + user2.name + " набрал " + user2.score + " очков.");
+ 	
+</script>

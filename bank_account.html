@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	var now = new Date(); // считываем текущие время, дату
+	var month = ["январь", "февраль", "март", "апрель", "май", "июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"];
+	
+	do{ //Запрашиваем у пользователя сумму, положительную. Число.
+	var money = +prompt("Введите денежную сумму, которую вы собираетесь положить в банк.");
+	} while (isNaN(money) || money < 0)
+	
+	do { // Запрашиваем у пользователя процент, положительный. Число. 
+		var percent = +prompt("Введите процентную ставку банка. ");
+	} while (isNaN(percent) || percent < 0)
+	
+	do { // Запрашиваем у пользователя срок кратный году, положительный. Число. 
+		var period = +prompt("Введите срок размещения денежных средств на вкладе. Минимум 1 год. ");
+	} while (isNaN(period) || period < 0)
+
+    for (var i=0; i<period*12; i++){
+        now.setMonth(now.getMonth()+1); // добавляем месяц, т.к. проценты будут начислены в сл. мес.
+        if (now.getMonth()==0){ // выводим год, только один раз в 12 мес. 
+            document.write("<br />------<br />");
+            document.write(now.getFullYear());
+            document.write("<br />------<br />");
+        }
+        document.write(month[now.getMonth()]); // выводим мес. буквами
+        document.write(" - ");
+        money += money*percent/1200; // подсчёт начисленных процентов в мес.
+        document.write(money.toFixed(2)); // вывод процентов
+        document.write("<br />");
+    }
+</script>

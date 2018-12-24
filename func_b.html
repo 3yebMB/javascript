@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    function sum(mass){
+        var result = 0;
+        for (var i=0; i<mass.length; i++){
+            result += mass[i];
+        }
+        alert("Сумма элементов массива = " + result);
+    }
+    
+    do {
+        var n = +prompt("Введите кол-во элементов в массиве.");
+    } while (n<=0)
+    
+    var arr = [];
+    for (var i=0; i<n; i++){
+        arr.push(+prompt("Введите " + (i+1) + " элемент массива"));
+    }
+    
+    sum(arr); 
+    
+</script>

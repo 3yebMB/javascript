@@ -1,0 +1,40 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    alert("Следущая игра состоит из 4 вопросов.\n Для завершения игры напишите: \"Стоп\". Удачи. ");
+//    var gameCount = 4;
+    var rightAnswerCounter = 0;
+    var userAnswer = "";
+    var rightAnswer = [["фонтан","фанта", "fountain"], ["яма","ямка","канава"], ["мэри","маша","мария"], ["шахматист","гроссмейстер","матершинник"]];
+    var question = ["Странный дождь порой идет\n сотней струй он кверху бьет.",
+                    "Чем больше из неё берёшь, тем больше она становится.",
+                    "У отца Мэри есть 5 дочерей: Чача, Чичи, Чече, Чочо. Как зовут 5 дочь?",
+                    "Кто может поднять и передвинуть и коня, и слона?"];
+    
+    function compareUserAnswer(userAnswer, rightAnswer){
+        if (rightAnswer.includes(userAnswer)){
+            alert("Поздравляю! Это правильный ответ");
+            rightAnswerCounter++;
+        }
+        else
+            alert("Ваш ответ неправильный!");
+    }
+    
+    
+    for (var i=0; i<question.length; i++){
+        
+        userAnswer = prompt(question[i]);
+        
+        if (userAnswer.toLowerCase() == "стоп"){
+            rightAnswerCounter = -1;
+            break;
+        }
+        else
+            compareUserAnswer(userAnswer.toLowerCase(), rightAnswer[i]);
+    }   
+    
+    if (rightAnswerCounter != -1)
+        alert("Игра окончена! Вы отгадали " + rightAnswerCounter + " загадок.");
+    else
+        alert("Вы прервали игру. Всего хорошо.");
+        
+</script>

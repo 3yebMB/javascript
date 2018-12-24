@@ -1,0 +1,73 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    
+    function max(mass){
+        var result = mass[0];
+        var i=1;
+        while (i<mass.length){
+            if (mass[i]>result)
+                result = mass[i];
+            i++;
+        }
+        alert("Максимальный элемент массива = " + result);
+    }
+    
+    function min(mass){
+        var result = mass[0];
+        var i=1;
+        while (i<mass.length){
+            if (mass[i]<result)
+                result = mass[i];
+            i++;
+        }
+        alert("Минимальный элемент массива = " + result);
+    }
+    
+    function even(mass){
+        //var result = mass[0];
+        var i=0;
+        while (i<mass.length){
+            if ((mass[i]%2)!=0)
+                mass.splice(i,1);
+            else
+                i++;
+        }
+        if (mass.length==0)
+            alert("В исходном массиве нет четных чисел.");
+        else    
+            alert("Только четные числа в исходном массиве: " + mass);
+    }
+    
+    function sum(mass){
+        var result = 0;
+        for (var i=0; i<mass.length; i++){
+            result += mass[i];
+        }
+        alert("Сумма элементов массива = " + result);
+    }
+    
+    do {
+        var n = +prompt("Введите кол-во элементов в массиве.");
+    } while (n<=0)
+    
+    var arr = [];
+    for (var i=0; i<n; i++){
+        arr.push(+prompt("Введите " + (i+1) + " элемент массива"));
+    }
+    
+    do {
+        var userChoice = +prompt("Выберете, что необходимо сделать с массивом:\n1 - ссумировать все эелементы массива\n2 - определить максимальное число в массиве\n3 - определить минимальное число в массиве\n4 -показать только четные числа в массиве\n0/Отмена - выход.");
+    
+        switch (userChoice){
+            case 1 : sum(arr); 
+                break;
+            case 2 : max(arr); 
+                break;
+            case 3 : min(arr); 
+                break;
+            case 4 : even(arr); 
+                break; 
+        }
+    } while (userChoice != 0)
+    
+</script>

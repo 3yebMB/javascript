@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    function even(mass){
+        //var result = mass[0];
+        var i=0;
+        while (i<mass.length){
+            if ((mass[i]%2)!=0)
+                mass.splice(i,1);
+            else
+                i++;
+        }
+        if (mass.length==0)
+            alert("В исходном массиве четных чисел не было.");
+        else    
+            alert("Только четные числа в исходном массиве: " + mass);
+    }
+    
+    do {
+        var n = +prompt("Введите кол-во элементов в массиве.");
+    } while (n<=0)
+    
+    var arr = [];
+    for (var i=0; i<n; i++){
+        arr.push(+prompt("Введите " + (i+1) + " элемент массива"));
+    }
+    
+    even(arr); 
+    
+</script>

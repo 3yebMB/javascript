@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    function generatorN(n){
+        var arr = [];
+        for (var i=1; i<=n; i++){
+            arr.push(i);
+        }
+        return arr;
+    }
+    
+    while (true){
+        var n = +prompt("Введите положительное число больше 0. ");
+
+        if (n>0)
+            alert("Ваш массив от 1 до " + n + " : " + generatorN(n));
+        else
+            alert("Вы ввели некорректное число. Попробуйте еще раз.")
+    }
+</script>

@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    
+    function getRandomNumber(number){
+        return Math.round(Math.random()*number);
+        //return rand;
+    }
+    
+    function max(a, b){
+        if (a>=b)
+            return a;
+        else
+            return b;
+    }
+    
+/*    function factorial(n){
+        var result = 1;
+        for (var i=1; i<=n; i++){
+            result *= i;
+        }
+        return result;
+    }
+*/
+    function factorial(n){
+        if (n==0)    
+            return 1;
+        else
+            return factorial(n-1)*n;
+    }
+    
+    var f = factorial(5);
+    alert("5! = "+ f);
+    var a = max(34, 68);
+    var n = getRandomNumber(100);
+    var m = getRandomNumber(4);
+</script>

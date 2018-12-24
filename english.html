@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    //var english = ["food", "bike", "apple", "do", "mean"];
+    //var russain = ["еда", "велосипед", "яблоко", "делать", "иметь в виду"];
+    // плохая идея, т.к. можно допустить ошибку работая с двумя разными массивами
+    
+    function askForWords(words){
+        while (words.length != 0){
+            var i = parseInt(Math.random()*words.length);
+            var userTranslate = prompt("Как переводится слово: " + words[i][0]);
+            if (userTranslate==words[i][1]){
+                alert("Правильно!");
+                words.splice(i, 1);
+            } else {
+                alert("Нет, правильный ответ: " + words[i][1]);
+            }
+        } 
+    }
+    
+    var easewords = [
+        ["food", "еда"],
+        ["bike", "велосипед"],
+        ["apple", "яблоко"],
+        ["do", "делать"],
+        ["mean", "иметь в виду"]
+    ];
+    
+    askForWords(easewords);
+    alert("Поздравляю, Вы запомнили все слова! Переходите на следущий уровень.");
+    
+    var hardwords = [
+        ["chainsaw", "бензопила"],
+        ["squirrel", "белка"],
+        ["castle", "замок"],
+        ["homeland", "родина"],
+        ["bottom", "дно"]
+    ];
+    
+    askForWords(hardwords);
+    
+    alert("Поздравляю, Вы запомнили все слова!");
+</script>

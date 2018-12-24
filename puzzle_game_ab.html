@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    var maxTryCount = 2;
+    var rightAnswer = 6;
+    
+    alert("Человек, я хочу сыграть с тобой в одну игру. Чему будет равно 2+2*2 ?");
+    
+    for (var tryCount = 1; tryCount <= maxTryCount; tryCount++){
+        do {
+            var userAnswer = +prompt("У Вас "+ (maxTryCount-tryCount) +" попытка! Введите правильный, по вашему мнению, ответ. ");
+        }while (isNaN(userAnswer))
+        if (userAnswer==rightAnswer){
+            alert("Бинго! Вы выиграли!");
+            break;
+        }
+        else if (tryCount==maxTryCount)
+            alert("Вы проиграли! Правильный ответ "+ rightAnswer);
+        else
+            alert("Ответ неверный, попробуйте ещё раз. ");
+    }
+        
+</script>
